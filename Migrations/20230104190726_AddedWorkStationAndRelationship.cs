@@ -14,7 +14,7 @@ namespace DemoApiDotnet7.Migrations
                 name: "WorkStationId",
                 table: "Assets",
                 type: "int",
-                nullable: false,
+                nullable: true,
                 defaultValue: 0);
 
             migrationBuilder.CreateTable(
