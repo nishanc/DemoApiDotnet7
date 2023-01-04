@@ -4,5 +4,6 @@ namespace DemoApiDotnet7.Models
     {
         public int Id { get; set; }
         public string Code { get; set; }
+        public ICollection<Asset> Assets { get; set; }
     }
 }
