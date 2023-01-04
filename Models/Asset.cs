@@ -1,4 +1,4 @@
-namespace DemoApiDotnet7.Controllers
+namespace DemoApiDotnet7.Models
 {
     public class Asset
     {
