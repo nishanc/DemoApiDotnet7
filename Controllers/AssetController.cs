@@ -1,3 +1,4 @@
+using DemoApiDotnet7.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemoApiDotnet7.Controllers
@@ -6,6 +7,10 @@ namespace DemoApiDotnet7.Controllers
     [Route("[controller]")]
     public class AssetController : ControllerBase
     {
-
+        private readonly DataContext _context;
+        public AssetController(DataContext context)
+        {
+            _context = context;
+        }
     }
 }
