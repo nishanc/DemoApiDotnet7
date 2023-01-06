@@ -34,5 +34,33 @@ namespace DemoApiDotnet7.Controllers
             
             return Ok(value);
         }
+
+        // POST api/Asset
+        [HttpPost]
+        public async Task<IActionResult> NewAsset([FromBody] AssetToInsert assetToInsert)
+        {
+            if (assetToInsert is null){
+                return BadRequest();
+            }
+            var asset = new Asset{
+                ItemCode = assetToInsert.ItemCode,
+                Name = assetToInsert.Name,
+                Description = assetToInsert.Description,
+                WorkStationId = assetToInsert.WorkStationId
+            };
+
+            try
+            {
+                await _context.Assets.AddAsync(asset);
+                await _context.SaveChangesAsync();   
+            }
+            catch (System.Exception ex)
+            {
+                Console.Write(ex.Message);
+                return StatusCode(500);
+            }
+            
+            return Ok(asset);
+        }
     }
 }
