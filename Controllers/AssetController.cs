@@ -1,5 +1,6 @@
 using DemoApiDotnet7.Data;
 using DemoApiDotnet7.DTOs;
+using DemoApiDotnet7.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +20,7 @@ namespace DemoApiDotnet7.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsset(int id)
         {
-            var value = await _context.Assets.FirstOrDefaultAsync(x => x.Id == id);
+            var value = await _context.Assets.Include(x => x.WorkStation).FirstOrDefaultAsync(x => x.Id == id);
 
             if (value is null){
                 return NotFound();
